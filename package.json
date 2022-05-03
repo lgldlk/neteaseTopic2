@@ -8,7 +8,15 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "vue": "^3.2.33"
+    "ant-design-vue": "^2.2.8",
+    "axios": "^0.27.2",
+    "mockjs": "^1.1.0",
+    "node": "^17.7.2",
+    "sass-loader": "^10",
+    "sass-resources-loader": "2.2.5",
+    "vue": "^3.2.33",
+    "vue-router": "4.0.14",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -17,20 +25,29 @@
     "@vue/compiler-sfc": "^3.0.0-0",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0-0"
+    "eslint-plugin-vue": "^7.0.0-0",
+    "node-sass": "^7.0.1",
+    "sass": "^1.51.0"
   },
   "eslintConfig": {
     "root": true,
     "env": {
       "node": true
     },
-    "extends": ["plugin:vue/vue3-essential", "eslint:recommended"],
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended"
+    ],
     "parserOptions": {
       "parser": "babel-eslint"
     },
     "rules": {}
   },
-  "browserslist": ["> 1%", "last 2 versions", "not dead"],
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
   "keywords": [],
   "description": ""
 }
