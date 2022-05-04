@@ -18,8 +18,9 @@ Mock.mock("/userInfo", (req, res) => {
         return Mock.mock({
             code: 200,
             data: {
-                name: "admin",
+                username: "陈柯",
                 password: "123456",
+                avatar: "https://q1.qlogo.cn/g?b=qq&nk=1851293758&s=640",
                 role: ["admin"],
             },
         });

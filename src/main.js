@@ -4,7 +4,7 @@ import App from "./App";
 import router from "./router";
 import store from "./store";
 import "ant-design-vue/dist/antd.css";
-
+import "./common/css/common.css";
 // if (process.env.NODE_ENV === "production") {
 require("../mock/mock");
 // }

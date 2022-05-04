@@ -12,9 +12,7 @@ export const asyncRoutes = [{
     component: mainLayout,
     redirect: "/index",
     meta: {
-        title: "首页",
-        icon: "home-4-line",
-        affix: true,
+        title: "xx管理",
     },
     children: [{
         path: "index",
@@ -22,9 +20,7 @@ export const asyncRoutes = [{
         component: () =>
             import ("@/views/testForm"),
         meta: {
-            title: "首页",
-            icon: "home-4-line",
-            affix: true,
+            title: "第二题",
             roles: ["admin"],
         },
     }, ],

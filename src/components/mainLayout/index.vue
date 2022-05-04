@@ -13,7 +13,6 @@
         <a-menu v-model:openKeys="openKeys"
                 mode="inline"
                 theme="dark"
-                :inline-collapsed="collapse"
                 class="menu-class">
           <template v-for="item in routes"
                     :key="item.name">
@@ -53,6 +52,19 @@
                  :lg="12"
                  :xl="12">
 
+            <a-dropdown>
+              <span class="userBox">
+                <a-avatar :src="avatar" />
+                {{ username }}
+                <DownOutlined />
+              </span>
+              <template v-slot:overlay>
+                <a-menu>
+                  <a-menu-item>我是装样子的</a-menu-item>
+                </a-menu>
+              </template>
+            </a-dropdown>
+
           </a-col>
         </a-row>
       </a-layout-header>
@@ -62,7 +74,7 @@
 </template>
 <script >
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons-vue'
-
+import { DownOutlined } from '@ant-design/icons-vue'
 import subMenu from './components/subMenu/index.vue'
 import { defineComponent, computed, ref } from "vue";
 import baseApi from '@/hooks'
@@ -70,7 +82,7 @@ export default defineComponent({
   components: {
     MenuUnfoldOutlined,
     MenuFoldOutlined,
-    subMenu
+    subMenu, DownOutlined
   },
   setup () {
 
@@ -87,17 +99,22 @@ export default defineComponent({
         store.commit('system/toggleCollapse')
       },
       routes = computed(() => {
-        console.log("🥖 ~ file: index.vue ~ line 73 ~ routes=computed ~ store.getters['user/getRoute']", store.getters["user/getRoute"])
         return store.getters["user/getRoute"]
 
 
+      }),
+      username = computed(() => {
+        return store.getters["user/username"]
+      }),
+      avatar = computed(() => {
+        return store.getters["user/avatar"]
       })
 
 
     return {
       routes,
       selectedKeys,
-      openKeys,
+      openKeys, username, avatar,
       collapse,
       toggleCollapse
     };
@@ -119,6 +136,7 @@ export default defineComponent({
     }
   }
   .layout-inner {
+    height: 100vh;
     .ant-col + .ant-col {
       display: flex;
       justify-content: flex-end;
@@ -136,6 +154,11 @@ export default defineComponent({
         &:hover {
           color: #1890ff;
         }
+      }
+      .userBox {
+        margin-right: 30px;
+        display: block;
+        cursor: pointer;
       }
     }
   }

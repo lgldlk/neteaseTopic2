@@ -1,5 +1,5 @@
 const state = {
-    collapse: true,
+    collapse: false,
     routes: [],
 };
 
