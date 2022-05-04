@@ -229,7 +229,7 @@ export default defineComponent({
       colorFormRule = {
         attributeName: [{ required: true, message: '请输入这个属性的属性名' }, {
           validator: (rule, val) => {
-            //重复的属性名不能重复添加
+            //重复的属性名不能重复添加 再修改时不能修改为别的属性名
             const array = colorResultList.value
             for (let index = 0; index < array.length; index++) {
               const element = array[index];
@@ -371,7 +371,7 @@ export default defineComponent({
             colorFormRef.value.resetFields()
             addModelVisible.value = false
           })
-        } else if (modelInfo.value.value == 'image') {
+        } else if (modelInfo.value.value == 'image') {//判断是图片类型的添加
           imageFormRef.value.validateFields().then(res => {
             console.log(res);
             res.type = modelInfo.value.value
@@ -393,7 +393,7 @@ export default defineComponent({
             editIndex = null
 
           })
-        } else if (modelInfo.value.value == 'image') {
+        } else if (modelInfo.value.value == 'image') {//判断是图片类型的修改
           imageFormRef.value.validateFields().then(res => {
             console.log(res);
             res.type = modelInfo.value.value
@@ -412,7 +412,7 @@ export default defineComponent({
       }
 
     },
-      cancelConfirm = () => {
+      cancelConfirm = () => {//取消弹窗
 
         if (editMod.value == 1) {
 
@@ -423,7 +423,7 @@ export default defineComponent({
           editIndex = null
         }
       },
-      editItem = (item) => {
+      editItem = (item) => {//编辑某项
 
         editMod.value = 1
         beforeModelInfo = JSON.parse(JSON.stringify(modelInfo.value))
@@ -462,18 +462,18 @@ export default defineComponent({
         }
 
       },
-      deleteItem = (item) => {
+      deleteItem = (item) => {//删除某项
         if (item.type == "image") {
           imageResultList.value = imageResultList.value.filter(item => item.attributeName != item.attributeName)
         } else if (item.type == "color") {
           colorResultList.value = colorResultList.value.filter(item => item.attributeName != item.attributeName)
         }
       },
-      clearForm = () => {
+      clearForm = () => {//清空表单
         imageResultList.value = []
         colorResultList.value = []
       },
-      sendForm = () => {
+      sendForm = () => {//模拟提交表单
         console.log(jsonData.value);
         message.success("提交成功");
       }
